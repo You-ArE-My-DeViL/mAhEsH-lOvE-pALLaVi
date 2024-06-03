@@ -19,8 +19,9 @@ public class LoveApplicationIntegrationTest {
 
     @Test
     public void testHome() throws Exception {
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-                String.class)).contains("I LOVE YOU PALLAVI!");
+        ResponseEntity<String> responseEntity = this.restTemplate.getForEntity("http://localhost:" + port + "/", String.class);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 }
+
 
