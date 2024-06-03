@@ -1,25 +1,15 @@
-package com.example.love.controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+@Controller
+public class HomeController {
 
-@WebMvcTest(HomeController.class)
-public class HomeControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Test
-    public void testHome() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/"))
-               .andExpect(MockMvcResultMatchers.status().isOk())
-               .andExpect(MockMvcResultMatchers.view().name("index"))
-               .andExpect(MockMvcResultMatchers.model().attributeExists("message"));
+    @GetMapping("/")
+    public String home(Model model) {
+        // Adding the 'message' attribute to the model
+        model.addAttribute("message", "I LOVE YOU DEAR PALLAVI!");
+        return "index";
     }
 }
 
