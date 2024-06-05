@@ -1,9 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        // Use a specific Docker-enabled agent
+        label 'docker'
+    }
 
     environment {
-        // Define environment variables if needed
-        DOCKER_IMAGE = 'mypallavi'
+        // Define the Docker image name with a tag if needed
+        DOCKER_IMAGE = 'mypallavi:latest'
     }
 
     stages {
@@ -18,7 +21,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    docker.build(DOCKER_IMAGE, '-f /root/mAhEsH-lOvE-pALLaVi/Dockerfile .')
+                    docker.build(DOCKER_IMAGE)
                 }
             }
         }
@@ -26,9 +29,10 @@ pipeline {
         stage('Test Docker Image') {
             steps {
                 script {
-                    // Run the Docker container and execute tests
+                    // Run the Docker container and execute Maven tests
                     docker.image(DOCKER_IMAGE).inside {
-                        sh 'mvn test' // Replace with your actual test command
+                        // Execute Maven test command
+                        sh 'mvn clean test'
                     }
                 }
             }
