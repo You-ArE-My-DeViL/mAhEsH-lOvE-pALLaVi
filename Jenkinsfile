@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    docker.build(DOCKER_IMAGE)
+                    docker.build(DOCKER_IMAGE, '-f /root/mAhEsH-lOvE-pALLaVi/Dockerfile .')
                 }
             }
         }
