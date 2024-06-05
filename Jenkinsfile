@@ -1,50 +1,39 @@
 pipeline {
-    agent {
-        // Use a specific Docker-enabled agent
-        label 'docker'
-    }
-
-    environment {
-        // Define the Docker image name with a tag if needed
-        DOCKER_IMAGE = 'mypallavi:latest'
-    }
+    agent any
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the code from the repository
+                // Checkout code from Git repository
                 git 'https://github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi.git'
             }
         }
-
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
-                script {
-                    // Build the Docker image
-                    docker.build(DOCKER_IMAGE)
-                }
+                // Build the Maven project
+                sh 'mvn clean install'
             }
         }
-
-        stage('Test Docker Image') {
+        stage('Test') {
             steps {
-                script {
-                    // Run the Docker container and execute Maven tests
-                    docker.image(DOCKER_IMAGE).inside {
-                        // Execute Maven test command
-                        sh 'mvn clean test'
-                    }
-                }
+                // Run tests using Maven
+                sh 'mvn test'
             }
         }
     }
 
     post {
         always {
-            script {
-                // Clean up Docker resources
-                sh "docker rmi ${DOCKER_IMAGE}"
-            }
+            // Clean up any temporary files or resources
+            cleanWs()
+        }
+        success {
+            // Actions to perform if the pipeline is successful
+            echo 'Build and tests passed successfully!'
+        }
+        failure {
+            // Actions to perform if the pipeline fails
+            echo 'Build or tests failed!'
         }
     }
 }
