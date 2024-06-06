@@ -56,10 +56,15 @@
         </plugins>
     </build>
     <distributionManagement>
-       <repository>
-          <id>github</id>
-          <url>https://github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi.git</url>
-       </repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi.git</url>
+        </repository>
+        <snapshotRepository>
+            <id>github-snapshots</id>
+            <name>GitHub Packages Snapshots</name>
+            <url>https://github.com/features/packages</url>
+        </snapshotRepository>
     </distributionManagement>
-
 </project>
