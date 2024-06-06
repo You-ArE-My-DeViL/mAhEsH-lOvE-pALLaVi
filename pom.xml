@@ -52,7 +52,15 @@
                             <source>11</source>
                     <target>11</target>
                 </configuration>
-            </plugin>
+	   </plugin>
+           <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <!-- Optional: Add any specific configuration for the deploy plugin -->
+                </configuration>
+           </plugin>
         </plugins>
     </build>
     <distributionManagement>
