@@ -64,12 +64,12 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi.git</url>
+            <url>https://maven.pkg.github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi</url>
         </repository>
         <snapshotRepository>
             <id>github-snapshots</id>
             <name>GitHub Packages Snapshots</name>
-            <url>https://github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi.git</url>
+            <url>https://maven.pkg.github.com/You-ArE-My-DeViL/mAhEsH-lOvE-pALLaVi</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
